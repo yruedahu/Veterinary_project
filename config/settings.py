@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
+""" DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'veterinary_db',
@@ -105,7 +105,7 @@ DATABASES = {
         }
     }
 }
-
+ """
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
