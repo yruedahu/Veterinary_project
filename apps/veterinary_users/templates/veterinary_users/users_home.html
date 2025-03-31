@@ -12,37 +12,45 @@
 <body>
     <header>
         <h1>Gestión de Usuarios</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Usuarios</a></li>
-                <li><a href="#">Roles</a></li>
-                <li><a href="#">Configuración</a></li>
-            </ul>
-        </nav>
     </header>
-
-    <section class="users-container">
-        <div class="user-card">
-            <img src="{% static 'images/admin.png' %}" alt="Usuario 1">
-            <h3>Juana Pérez</h3>
-            <p>Administrador</p>
-            <button>Ver Perfil</button>
-        </div>
-        <div class="user-card">
-            <img src="{% static 'images/doctor_pets.png' %}" alt="Usuario 2">
-            <h3>Carlota López</h3>
-            <p>Veterinaria</p>
-            <button>Ver Perfil</button>
-        </div>
-        <div class="user-card">
-            <img src="{% static 'images/recep.png' %}" alt="Usuario 3">
-            <h3>Maria Ramírez</h3>
-            <p>Recepcionista</p>
-            <button>Ver Perfil</button>
-        </div>
-    </section>
-
+    
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Menú</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Usuarios</a></li>
+                <li><a href="#">Veterinarios</a></li>
+                <li><a href="#">Citas</a></li>
+                <li><a href="#">Mascotas</a></li>
+                <li><a href="#">Ajustes</a></li>
+            </ul>
+        </aside>
+        
+        <main class="content">
+            <section class="users-container">
+                <div class="user-card">
+                    <img src="{% static 'images/admin.png' %}" alt="Usuario 1">
+                    <h3>Juana Pérez</h3>
+                    <p>Administrador</p>
+                    <button>Ver Perfil</button>
+                </div>
+                <div class="user-card">
+                    <img src="{% static 'images/doctor_pets.png' %}" alt="Usuario 2">
+                    <h3>Carlota López</h3>
+                    <p>Veterinaria</p>
+                    <button>Ver Perfil</button>
+                </div>
+                <div class="user-card">
+                    <img src="{% static 'images/recep.png' %}" alt="Usuario 3">
+                    <h3>Maria Ramírez</h3>
+                    <p>Recepcionista</p>
+                    <button>Ver Perfil</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    
     <footer>
         <p>&copy; 2024 Veterinaria PYTHON - Gestión de Usuarios</p>
     </footer>
