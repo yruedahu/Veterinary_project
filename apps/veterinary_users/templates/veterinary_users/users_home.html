@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios - Veterinaria PYTHON</title>
+    <link rel="stylesheet" href="{% static 'css/users_style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Gestión de Usuarios</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Usuarios</a></li>
+                <li><a href="#">Roles</a></li>
+                <li><a href="#">Configuración</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="users-container">
+        <div class="user-card">
+            <img src="{% static 'images/admin.png' %}" alt="Usuario 1">
+            <h3>Juana Pérez</h3>
+            <p>Administrador</p>
+            <button>Ver Perfil</button>
+        </div>
+        <div class="user-card">
+            <img src="{% static 'images/doctor_pets.png' %}" alt="Usuario 2">
+            <h3>Carlota López</h3>
+            <p>Veterinaria</p>
+            <button>Ver Perfil</button>
+        </div>
+        <div class="user-card">
+            <img src="{% static 'images/recep.png' %}" alt="Usuario 3">
+            <h3>Maria Ramírez</h3>
+            <p>Recepcionista</p>
+            <button>Ver Perfil</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Veterinaria PYTHON - Gestión de Usuarios</p>
+    </footer>
+</body>
+</html>
