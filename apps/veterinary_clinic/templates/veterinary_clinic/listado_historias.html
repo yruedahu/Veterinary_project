@@ -1,0 +1,6 @@
+<h2>Listado de Historias Clínicas</h2>
+<ul>
+    {% for historia in historias %}
+        <li>ID: {{ historia.id }} - Raza: {{ historia.raza }}</li>
+    {% endfor %}
+</ul>
