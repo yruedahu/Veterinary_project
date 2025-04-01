@@ -1,0 +1,1 @@
+from .historia_clinica_form import HistoriaClinicaForm
