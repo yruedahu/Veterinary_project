@@ -1,78 +1,51 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-/* --- HEADER --- */
-header {
-    background: #4CAF50;
-    padding: 15px 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header h1 {
-    color: white;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-}
-
 /* FORMULARIO */
 .form-section {
     width: 100%;
-    max-width: 600px;
+    max-width: 700px;
     background: white;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
     text-align: center;
-    margin: 40px auto; /* Centrado automático horizontalmente */
 }
 
-
-h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-}
-
+/* Contenedor con dos columnas */
 .form-container {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Estilos para cada fila del formulario */
-.form-container p {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
     text-align: left;
 }
 
-/* Inputs, selects y textarea */
-input, textarea, select {
+/* Ajuste para los campos individuales */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-top: 5px;
     font-size: 16px;
+}
+
+/* Motivo de consulta ocupa ambas columnas */
+.form-group.textarea {
+    grid-column: span 2;
+}
+
+/* Centrar el botón */
+.form-actions {
+    grid-column: span 2;
+    text-align: center;
 }
 
 /* Botón */
@@ -92,41 +65,5 @@ button.btn {
 button.btn:hover {
     background: #45a049;
     cursor: pointer;
-    color: black
-}
-
-
-
-/*Mensajes*/
-.messages {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 300px;
-    z-index: 1000;
-}
-
-.alert {
-    padding: 10px 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    animation: fadeOut 5s ease-in-out forwards;
-}
-
-/* Estilos según el tipo de mensaje */
-.alert.success { 
-    background-color: rgba(76, 175, 80, 0.9); /* Verde con 90% de opacidad */
-    color: white; 
-}
-.alert.info { background-color: #2196F3; color: white; }
-.alert.warning { background-color: #ff9800; color: white; }
-.alert.error { background-color: #f44336; color: white; }
-
-/* Animación para que desaparezca */
-@keyframes fadeOut {
-    0% { opacity: 1; }
-    90% { opacity: 1; }
-    100% { opacity: 0; }
+    color: black;
 }
