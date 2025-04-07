@@ -91,6 +91,40 @@ form select {
     min-width: 320px;
 }
 
+/* Imagen decorativa */
+.form-image {
+    width: 350px;
+    height: auto;
+    margin-left: 40px;
+    z-index: 1;
+}
+
+.visit-box {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.visit-image {
+    flex: 1;
+    max-width: 400px;
+    min-width: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visit-image img {
+    width: 100%;
+    max-width: 350px; /* Limita el tamaño de la imagen */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
 /* Botón guardar */
 .btn {
     background-color: #45a049;
@@ -140,4 +174,24 @@ body {
 
 main {
     flex: 1;
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 768px) {
+    .visit-box {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .visit-image {
+        margin-top: 20px;
+        max-width: 90%;
+    }
+
+    .visit-form-container {
+        width: 100%;
+    }
 }
