@@ -1,7 +1,17 @@
 from django.shortcuts import render, redirect
 from .models import Producto
 from .forms import ProductoForm  # Importamos el formulario
+from django.shortcuts import render, get_object_or_404
 
+def detalle_producto(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+    context = {
+        'nombre': producto.nombre,
+        'cantidad': producto.cantidad,
+        'precio': producto.precio,
+        'descripcion': producto.descripcion
+    }
+    return render(request, 'veterinary_inventory/detalle_producto.html', context) # Esto es para que nos envie a la direccion que necesitamos por id y nos mueste los datos 
 
 def inventory_home(request):
     productos = Producto.objects.all()  # Aquí es donde ocurre el error
