@@ -24,3 +24,7 @@ class HistoriaClinica(models.Model):
 
     def __str__(self):
         return f"{self.nombre_mascota} - {self.fecha_atencion}"
+    
+    @property
+    def id_str(self):
+        return str(self._id)

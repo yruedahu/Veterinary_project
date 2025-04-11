@@ -33,7 +33,6 @@
             {% endfor %}
         </div>
 
-
         <h2>Registrar Consulta médica</h2>
         <form method="POST">
             {% csrf_token %}
@@ -99,5 +98,43 @@
         <p>&copy; 2024 Veterinaria Django - Todos los derechos reservados.</p>
     </footer>
 </body>
-
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const especieSelect = document.getElementById('id_especie');
+        const razaSelect = document.getElementById('id_raza');
+        const departamentoSelect = document.getElementById('id_departamento');
+        const ciudadSelect = document.getElementById('id_ciudad');
+    
+        especieSelect.addEventListener('change', function () {
+            const especieId = this.value;
+            fetch(`/clinic/ajax/cargar-razas/?especie_id=${especieId}`)
+                .then(response => response.json())
+                .then(data => {
+                    razaSelect.innerHTML = '<option value="">---------</option>';
+                    data.forEach(raza => {
+                        const option = document.createElement('option');
+                        option.value = raza._id;
+                        option.textContent = raza.nombre;
+                        razaSelect.appendChild(option);
+                    });
+                });
+        });
+    
+        departamentoSelect.addEventListener('change', function () {
+            const deptoId = this.value;
+            fetch(`/clinic/ajax/cargar-ciudades/?departamento_id=${deptoId}`)
+                .then(response => response.json())
+                .then(data => {
+                    ciudadSelect.innerHTML = '<option value="">---------</option>';
+                    data.forEach(ciudad => {
+                        const option = document.createElement('option');
+                        option.value = ciudad._id;
+                        option.textContent = ciudad.nombre;
+                        ciudadSelect.appendChild(option);
+                    });
+                });
+        });
+    });
+    </script>
+    
 </html>

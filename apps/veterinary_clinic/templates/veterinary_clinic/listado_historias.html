@@ -1,6 +1,11 @@
-<h2>Listado de Historias Clínicas</h2>
+<h2>Historias clínicas registradas</h2>
 <ul>
     {% for historia in historias %}
-        <li>ID: {{ historia.id }} - Raza: {{ historia.raza }}</li>
+        <li>
+            {{ historia.id_str }} - {{ historia.nombre_mascota }} - {{ historia.especie.nombre }} - {{ historia.raza }} - {{historia.edad}} - 
+            {{ historia.duenio }} - {{ historia.telefono_contacto }} - {{ historia.motivo_consulta }} - {{ historia.fecha_consulta }}
+        </li>
+    {% empty %}
+        <li>No hay historias registradas.</li>
     {% endfor %}
 </ul>

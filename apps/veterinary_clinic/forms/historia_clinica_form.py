@@ -1,4 +1,5 @@
 from django import forms
+from bson import ObjectId
 from ..models.historia_clinica import HistoriaClinica
 from ..models.especie import Especie
 from ..models.raza import Raza
@@ -34,14 +35,14 @@ class HistoriaClinicaForm(forms.ModelForm):
 
         if "especie" in self.data:
             try:
-                especie_id = self.data.get("especie")
+                especie_id = ObjectId(self.data.get("especie"))
                 self.fields["raza"].queryset = Raza.objects.filter(especie_id=especie_id)
             except (ValueError, TypeError):
                 pass  
 
         if "departamento" in self.data:
             try:
-                departamento_id = self.data.get("departamento")
+                departamento_id = ObjectId(self.data.get("departamento"))
                 self.fields["ciudad"].queryset = Ciudad.objects.filter(departamento_id=departamento_id)
             except (ValueError, TypeError):
                 pass  
