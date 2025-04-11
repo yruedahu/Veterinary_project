@@ -1,0 +1,82 @@
+/* --- INVENTARIO --- */
+.inventory {
+    padding: 50px;
+    text-align: center;
+}
+
+.inventory table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.inventory th, .inventory td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.inventory th {
+    background: #4CAF50;
+    color: white;
+}
+
+.inventory .btn-edit {
+    background: #ffc107;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.inventory .btn-delete {
+    background: #dc3545;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+
+.product-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+textarea.form-control {
+    resize: none;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+
+
+
