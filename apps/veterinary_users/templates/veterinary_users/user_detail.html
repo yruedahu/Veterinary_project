@@ -1,56 +1,37 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'veterinary_users/base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>{{ user.get_full_name }} - Detalle del Usuario</title>
-    <link rel="stylesheet" href="{% static 'css/users_style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
+{% block title %}{{ user.get_full_name }} - Detalle del Usuario{% endblock %}
 
-<body>
-    <div class="wrapper">
-        <header>
-            <h1>Detalle del Usuario</h1>
-        </header>
-
-        <section class="product-detail-section">
-            <div class="product-container">
-                <div class="product-image">
-                    {% if user.profile_image %}
-                        <img src="{{ user.profile_image.url }}" alt="Foto de perfil de {{ user.username }}">
-                    {% else %}
-                        <img src="{% static 'images/admin.png' %}" alt="Sin foto de perfil">
-                    {% endif %}
-                </div>
-                <div class="product-info">
-                    <h2>{{ user.get_full_name }}</h2>
-                    <p class="product-description-text">
-                        <strong>Rol:</strong> {{ user.get_role_display }}
-                    </p>
-                    <ul>
-                        <li><strong>Correo electrónico:</strong> {{ user.email }}</li>
-                        <li><strong>Teléfono:</strong> {{ user.phone }}</li>
-                        <li><strong>Dirección:</strong> {{ user.address }}</li>
-                        {% if extra.type == "Client" %}
-                            <li><strong>Mascotas registradas:</strong> {{ extra.pet_count }}</li>
-                        {% elif extra.type == "Veterinarian" %}
-                            <li><strong>Especialidad:</strong> {{ extra.specialty }}</li>
-                            <li><strong>Licencia:</strong> {{ extra.license_number }}</li>
-                            <li><strong>Años de experiencia:</strong> {{ extra.experience }}</li>
-                        {% elif extra.type == "Receptionist" %}
-                            <li><strong>Turno:</strong> {{ extra.shift }}</li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </section>
+{% block content %}
+<section class="product-detail-section">
+    <div class="product-container">
+        <div class="product-image">
+            {% if user.profile_image %}
+                <img src="{{ user.profile_image.url }}" alt="Foto de perfil de {{ user.username }}">
+            {% else %}
+                <img src="images/admin.png" alt="Sin foto de perfil">
+            {% endif %}
+        </div>
+        <div class="product-info">
+            <h2>{{ user.get_full_name }}</h2>
+            <p class="product-description-text">
+                <strong>Rol:</strong> {{ user.get_role_display }}
+            </p>
+            <ul>
+                <li><strong>Correo electrónico:</strong> {{ user.email }}</li>
+                <li><strong>Teléfono:</strong> {{ user.phone }}</li>
+                <li><strong>Dirección:</strong> {{ user.address }}</li>
+                {% if extra.type == "Client" %}
+                    <li><strong>Mascotas registradas:</strong> {{ extra.pet_count }}</li>
+                {% elif extra.type == "Veterinarian" %}
+                    <li><strong>Especialidad:</strong> {{ extra.specialty }}</li>
+                    <li><strong>Licencia:</strong> {{ extra.license_number }}</li>
+                    <li><strong>Años de experiencia:</strong> {{ extra.experience }}</li>
+                {% elif extra.type == "Receptionist" %}
+                    <li><strong>Turno:</strong> {{ extra.shift }}</li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
-
-    <footer>
-        <p>&copy; 2024 Veterinaria PYTHON - Gestión de Usuarios</p>
-    </footer>
-</body>
-
-</html>
+</section>
+{% endblock %}

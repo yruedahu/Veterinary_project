@@ -70,6 +70,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'apps/veterinary_home/static'),
     os.path.join(BASE_DIR, 'apps/veterinary_clinic/static'),
+    os.path.join(BASE_DIR, 'apps/veterinary_users/static'),
 ]
 
 TEMPLATES = [
@@ -78,6 +79,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'apps/veterinary_home/templates'),
             os.path.join(BASE_DIR, 'apps/veterinary_clinic/templates'),
+            os.path.join(BASE_DIR, 'apps/veterinary_users/templates'),
 
                  ],
         'APP_DIRS': True,
