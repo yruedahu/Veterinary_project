@@ -101,4 +101,7 @@ footer {
     color: white;
     padding: 15px 0;
     margin-top: 30px;
+    bottom: 0; 
+    width: 100%;
+    position: fixed;
 }

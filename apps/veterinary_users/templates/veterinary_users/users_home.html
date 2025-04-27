@@ -6,21 +6,21 @@
 <section class="users-container">
     <div class="user-card">
         <img src="images/admin.png" alt="Usuario 1">
-        <h3>Juana Pérez</h3>
-        <p>Administrador</p>
-        <a href="{% url 'user_detail' username='vet1' %}"><button>Ver Perfil</button></a>
+        <h3>Brayan Salas</h3>
+        <p>Cliente</p>
+        <a href="{% url 'user_detail' username='client1' %}"><button>Ver Perfil</button></a>
     </div>
     <div class="user-card">
         <img src="images/doctor_pets.png" alt="Usuario 2">
         <h3>Carlota López</h3>
         <p>Veterinaria</p>
-        <a href="{% url 'user_detail' username='recep1' %}"><button>Ver Perfil</button></a>
+        <a href="{% url 'user_detail' username='vet1' %}"><button>Ver Perfil</button></a>
     </div>
     <div class="user-card">
         <img src="images/recep.png" alt="Usuario 3">
         <h3>Maria Ramírez</h3>
         <p>Recepcionista</p>
-        <a href="{% url 'user_detail' username='admin1' %}"><button>Ver Perfil</button></a>
+        <a href="{% url 'user_detail' username='recep1' %}"><button>Ver Perfil</button></a>
     </div>
 </section>
 {% endblock %}

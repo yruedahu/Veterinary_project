@@ -30,6 +30,7 @@ def user_detail_by_username(request, username):
             }
         except Veterinarian.DoesNotExist:
             pass
+        
 
     elif user.role == 'recep':
         try:
