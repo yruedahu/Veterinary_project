@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial; font-size: 14px; }
+        h1 { text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>Factura</h1>
+    <p><strong>Cliente:</strong> {{ factura.nombre_cliente }}</p>
+    <p><strong>Identificación:</strong> {{ factura.identificacion }}</p>
+    <p><strong>Dirección:</strong> {{ factura.direccion }}</p>
+    <p><strong>Mascota:</strong> {{ factura.nombre_mascota }} ({{ factura.tipo_mascota }})</p>
+    <p><strong>Fecha:</strong> {{ factura.fecha }}</p>
+
+    <h3>Productos:</h3>
+    <ul>
+    {% for p in factura.productos %}
+        <li>{{ p.nombre }} - ${{ p.precio_unitario }}</li>
+    {% endfor %}
+    </ul>
+
+    <h3>Total: ${{ factura.precio_total }}</h3>
+</body>
+</html>

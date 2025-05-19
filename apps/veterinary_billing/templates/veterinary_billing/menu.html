@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'veterinary_billing/billing.css' %}">
+    <meta charset="UTF-8">
+    <title>Menú Principal - Sistema de Facturación Veterinaria</title>
+</head>
+<body>
+    <h1>Menú Principal - Sistema de Facturación Veterinaria</h1>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'crear_factura' %}">➕ Crear Factura</a></li>
+            <li><a href="{% url 'crear_producto' %}">➕ Agregar Producto o Servicio</a></li>
+            <li><a href="{% url 'historial_facturas' %}">📄 Historial de Facturas</a></li>
+        </ul>
+    </nav>
+
+    <div id="contenido">
+        {% block content %}
+        <p>Selecciona una opción del menú para comenzar.</p>
+        {% endblock %}
+    </div>
+</body>
+</html>
