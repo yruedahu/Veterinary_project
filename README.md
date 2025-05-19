@@ -1,4 +1,4 @@
-# 🏥 Veterinary Project
+# 🏥 Veterinary Project - MongoDB
 
 🚀 **Veterinary Project** es una aplicación web desarrollada en **Django** para gestionar información de clínicas veterinarias. Permite administrar usuarios, mascotas, facturación, inventarios y más.
 

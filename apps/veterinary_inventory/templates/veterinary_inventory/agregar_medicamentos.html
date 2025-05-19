@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Agregar Medicamentos{% endblock %}
+
+{% block content %}
+    <section class="form-section">
+        <h1 style="text-align: center;">Agregar Medicamentos</h1>
+        <form method="POST" class="product-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn">Guardar Medicamentos</button>
+        </form>
+        <div class="center-btn">
+            <a href="{% url 'inventory_home' %}" class="btn return-btn">Volver al Inventario</a>
+        </div>
+    </section>
+{% endblock %}

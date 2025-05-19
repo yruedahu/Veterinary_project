@@ -10,6 +10,16 @@
     border-collapse: collapse;
 }
 
+.hero-text .btn {
+    background: white;
+    color: #4CAF50;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
 .inventory th, .inventory td {
     padding: 10px;
     border: 1px solid #ddd;
@@ -77,6 +87,339 @@ button:hover {
     background: #2980b9;
 }
 
+/*Link de veterinary django */  
+.logo-link { 
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
+.logo-link2 { 
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
 
+/*Boton volver al inventario*/
+.center-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.return-btn {
+    background: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.return-btn:hover {
+    background: #45a049;
+}
+
+.return-btn2 {
+    background: #3b82f6;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.return-btn:hover {
+    background: #3b82f6;
+}
+
+
+
+/*--------------------------------------------------------------------*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+
+/* --- HEADER --- */
+header {
+    background: #4CAF50;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background: linear-gradient(to right, #4CAF50, #81C784);
+    color: white;
+}
+
+.hero-text {
+    max-width: 50%;
+}
+
+.hero-text h2 {
+    font-size: 2.5em;
+}
+
+.hero-text p {
+    margin: 15px 0;
+}
+
+.hero-text .btn {
+    background: white;
+    color: #4CAF50;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* --- SERVICES SECTION --- */
+.services {
+    text-align: center;
+    padding: 50px 30px;
+}
+
+.service-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 20px;
+}
+
+.service-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 250px;
+}
+
+.service-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/*BOTON EXPORTACION EXCEL*/
+.export-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.export-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.export-btn:hover {
+    background-color: #388e3c;
+}
+
+/*TABLAS DE VISTA DEL INVENTARIO*/
+ body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f5f7fa;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        margin-top: 30px;
+        font-size: 2em;
+        color: #2c3e50;
+    }
+
+    table {
+        margin: 30px auto;
+        border-collapse: separate;
+        border-spacing: 0;
+        width: 90%;
+        max-width: 1200px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: white;
+    }
+
+    th, td {
+        padding: 12px 16px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f9ff;
+    }
+
+    tr:hover {
+        background-color: #e1f0ff;
+    }
+
+    .btn-inventario {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #2ecc71;
+        color: white;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-inventario:hover {
+        background-color: #27ae60;
+    }
+
+    .btn-exportar {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background-color: #9b59b6;
+        color: white;
+        border-radius: 6px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-exportar:hover {
+        background-color: #8e44ad;
+    }
+
+/*Boton de busqueda en inventory html*/
+.form-filtro {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.contenedor-filtro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .contenedor-filtro {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.grupo-campo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.grupo-campo label {
+  font-size: 0.875rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.grupo-campo input,
+.grupo-campo select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.grupo-campo input:focus,
+.grupo-campo select:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 2px #bfdbfe;
+}
+
+.grupo-boton {
+  width: 100%;
+}
+
+.grupo-boton button {
+  width: 100%;
+  padding: 0.6rem 1.5rem;
+  background-color: #3b82f6;
+  color: #ffffff;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.grupo-boton button:hover {
+  background-color: #2563eb;
+}
+
+
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    padding: 15px 0;
+    margin-top: 30px;
+}
 
 

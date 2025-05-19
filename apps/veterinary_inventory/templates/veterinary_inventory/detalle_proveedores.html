@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ver Detalles{% endblock %}
+
+{% block content %}
+<section class="inventory">
+        
+    {% if proveedores %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Servicio o Producto</th>
+                    <th>Contacto</th>
+                    <th>Ubicacion</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proveedor in proveedores %}
+                <tr>
+                    <td>{{ proveedor.nombre }}</td>
+                    <td>{{ proveedor.servicio_producto }}</td>
+                    <td>{{ proveedor.contacto }}</td>
+                    <td>{{ proveedor.ubicacion }}</td>
+                    <td>{{ proveedor.estado }}</td>
+                    <td>
+                        <a href="{% url 'editar_proveedores' proveedor.id %}" class="btn-edit">Editar</a>
+                        <a href="{% url 'eliminar_proveedores' proveedor.id %}" class="btn-delete">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay proveedores registrados.</p>
+    {% endif %}
+    
+    <div class="center-btn">
+        <a href="{% url 'inventory_home' %}" class="btn return-btn">Volver al Inventario</a>
+    </div>
+</section>
+{% endblock %}

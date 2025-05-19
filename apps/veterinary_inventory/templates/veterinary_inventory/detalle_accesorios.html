@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ver Detalles{% endblock %}
+
+{% block content %}
+<section class="inventory">
+        
+    {% if accesorios %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for accesorio in accesorios %}
+                <tr>
+                    <td>{{ accesorio.nombre }}</td>
+                    <td>{{ accesorio.precio }}</td>
+                    <td>{{ accesorio.cantidad }}</td>
+                    <td>{{ accesorio.descripcion }}</td>
+                    <td>
+                        <a href="{% url 'editar_accesorios' accesorio.id %}" class="btn-edit">Editar</a><br><br>
+                        <a href="{% url 'eliminar_accesorios' accesorio.id %}" class="btn-delete">Eliminar</a>
+                        
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay accesorios registrados.</p>
+    {% endif %}
+    
+    <div class="center-btn">
+        <a href="{% url 'inventory_home' %}" class="btn return-btn">Volver al Inventario</a>
+    </div>
+</section>
+{% endblock %}
