@@ -1,16 +1,17 @@
 {% extends 'veterinary_users/base.html' %}
 
+{% load static %}
 {% block title %}{{ user.get_full_name }} - Detalle del Usuario{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/user_detail_style.css' %}">
+{% endblock %}
 
 {% block content %}
 <section class="product-detail-section">
     <div class="product-container">
         <div class="product-image">
-            {% if user.profile_image %}
-                <img src="{{ user.profile_image.url }}" alt="Foto de perfil de {{ user.username }}">
-            {% else %}
-                <img src="images/admin.png" alt="Sin foto de perfil">
-            {% endif %}
+                <img src="{% static 'images/admin.png' %}" alt="Sin foto de perfil">
         </div>
         <div class="product-info">
             <h2>{{ user.get_full_name }}</h2>

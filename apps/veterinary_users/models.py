@@ -1,5 +1,7 @@
 from django.db import models
+from django.db import DatabaseError
 from django.contrib.auth.models import AbstractUser
+from djongo.models import ObjectIdField
 
 USER_ROLES = [
     ('admin', 'Administrator'),
@@ -14,6 +16,7 @@ SHIFT_CHOICES = [
 ]
 
 class User(AbstractUser):
+    id = ObjectIdField(primary_key=True) 
     role = models.CharField(max_length=10, choices=USER_ROLES, default='client')
     phone = models.CharField(max_length=15, blank=True, null=True)
     address = models.TextField(blank=True, null=True)
@@ -29,6 +32,18 @@ class User(AbstractUser):
         related_name="custom_user_permissions",
         blank=True
     )
+
+    def save(self, *args, **kwargs):
+        if 'update_fields' in kwargs and kwargs['update_fields'] == ['last_login']:
+            # Realizar un guardado completo si update_fields no afecta filas
+            try:
+                super().save(*args, **kwargs)
+            except DatabaseError:
+                kwargs.pop('update_fields')
+                super().save(*args, **kwargs)
+            return
+        print(f"Llamando a save para el usuario: {self.username}, kwargs: {kwargs}")
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.username} ({self.get_role_display()})"
