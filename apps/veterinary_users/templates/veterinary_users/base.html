@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Veterinaria DJANGO{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/users_style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        .snackbar {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+        
+        .snackbar.show {
+            visibility: visible;
+            -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @-webkit-keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @-webkit-keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Veterinaria DJANGO{% endblock %}</h1>
+    </header>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <aside class="sidebar">
+        <h2>Menú</h2>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'login' %}">Usuarios</a></li>
+            <li><a href="{% url 'veterinarios' %}">Veterinarios</a></li>
+            <li><a href="{% url 'citas' %}">Citas</a></li>
+            <li><a href="{% url 'mascotas' %}">Mascotas</a></li>
+            <li><a href="{% url 'ajustes' %}">Ajustes</a></li>
+            {% if user.is_authenticated and user.role == 'admin' %}
+            <li><a href="{% url 'admin_users' %}">Gestión de Usuarios</a></li>
+            {% endif %}
+            
+        </ul>
+    </aside>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <div id="snackbar"></div>
+
+    {% if messages %}
+        <script>
+            function showSnackbar(message) {
+                const snackbar = document.getElementById("snackbar");
+                snackbar.textContent = message;
+                snackbar.className = "snackbar show";
+                setTimeout(() => { snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+            }
+
+            {% for message in messages %}
+                showSnackbar("{{ message }}");
+            {% endfor %}
+        </script>
+    {% endif %}
+
+    <footer>
+        <p>&copy; 2024 Veterinaria PYTHON - Gestión de Usuarios</p>
+    </footer>
+</body>
+</html>
