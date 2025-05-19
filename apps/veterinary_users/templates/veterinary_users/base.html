@@ -70,13 +70,14 @@
         <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'login' %}">Usuarios</a></li>
-            <li><a href="#">Veterinarios</a></li>
-            <li><a href="#">Citas</a></li>
-            <li><a href="#">Mascotas</a></li>
-            <li><a href="#">Ajustes</a></li>
+            <li><a href="{% url 'veterinarios' %}">Veterinarios</a></li>
+            <li><a href="{% url 'citas' %}">Citas</a></li>
+            <li><a href="{% url 'mascotas' %}">Mascotas</a></li>
+            <li><a href="{% url 'ajustes' %}">Ajustes</a></li>
             {% if user.is_authenticated and user.role == 'admin' %}
             <li><a href="{% url 'admin_users' %}">Gestión de Usuarios</a></li>
             {% endif %}
+            
         </ul>
     </aside>
 

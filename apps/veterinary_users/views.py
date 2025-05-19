@@ -143,3 +143,15 @@ def user_delete(request, username):
         messages.success(request, 'Usuario eliminado correctamente.')
         return redirect('users_home')
     return render(request, 'veterinary_users/user_confirm_delete.html', {'user': user})
+
+def veterinarios(request):
+    return render(request, 'veterinary_users/veterinarios.html')
+
+def citas(request):
+    return render(request, 'veterinary_users/citas.html')
+
+def mascotas(request):
+    return render(request, 'veterinary_users/mascotas.html')
+
+def ajustes(request):
+    return render(request, 'veterinary_users/ajustes.html')

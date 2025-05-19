@@ -11,4 +11,8 @@ urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='login'),
     path('register/', register, name='register'),
     path('admin', admin_users, name='admin_users'),
+    path('veterinarios/', views.veterinarios, name='veterinarios'),
+    path('citas/', views.citas, name='citas'),
+    path('mascotas/', views.mascotas, name='mascotas'),
+    path('ajustes/', views.ajustes, name='ajustes'),
 ]
