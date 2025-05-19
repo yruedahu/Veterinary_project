@@ -86,9 +86,127 @@ form select {
 }
 
 .wide-form {
-    flex: 2; /* Ocupa más espacio que la imagen */
+    flex: 2;
     max-width: 600px;
     min-width: 320px;
+}
+
+/* Tabla en mascotas_resumen.html */
+
+.table-container {
+    margin: auto;
+    padding: 1rem;
+    max-width: 95%; /* antes 90% */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-container h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95rem;
+}
+
+thead {
+    background-color: #45a049;
+    color: white;
+}
+
+th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #e6f0ff;
+}
+
+td[colspan] {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}
+
+.back-btn {
+    display: inline-block;
+    margin: 1rem;
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+.table-filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    max-width: 300px;
+}
+
+.clear-btn {
+    background-color: #054a29;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.clear-btn:hover {
+    background-color: #45a049;
+}
+
+.btn-export {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: inherit;       
+    font-weight: 400;           
+    line-height: normal;
+}
+
+.btn-export:hover {
+    background-color: #45a049;
+}
+
+.btn-export:focus {
+    outline: none;
 }
 
 /* Imagen decorativa */

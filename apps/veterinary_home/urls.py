@@ -9,4 +9,5 @@ urlpatterns = [
     path('clinic/', include('apps.veterinary_clinic.urls')),
     path('billing/', include('apps.veterinary_billing.urls')),
     path('inventory/', include('apps.veterinary_inventory.urls')),
+    path('servicios/', views.servicios_view, name='servicios')
 ]

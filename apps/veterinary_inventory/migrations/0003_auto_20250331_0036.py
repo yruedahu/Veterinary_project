@@ -25,9 +25,9 @@ class Migration(migrations.Migration):
             name='nombre',
             field=models.CharField(max_length=255),
         ),
-        migrations.AlterField(
-            model_name='producto',
-            name='precio',
-            field=models.DecimalField(decimal_places=2, max_digits=10),
-        ),
+        #migrations.AlterField(
+         #   model_name='producto',
+         #   name='precio',
+        #  field=models.DecimalField(decimal_places=2, max_digits=10),
+        #),
     ]

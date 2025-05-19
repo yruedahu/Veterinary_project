@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Resumen de Mascotas{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'pets_visit.css' %}">
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'mascotas_list' %}" class="back-btn">← Volver</a>
+
+<section class="form-section">
+    <div class="layout">
+        <div class="table-container">
+            <h2>Resumen de Mascotas</h2>
+            <div class="table-filters" style="margin-bottom: 1rem;">
+                <input type="text" id="searchPropietario" placeholder="Filtrar por propietario..." class="search-input">
+                <input type="text" id="searchMascota" placeholder="Filtrar por nombre de mascota..."
+                    class="search-input">
+                <button id="clearFilters" class="clear-btn">Limpiar filtros</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Propietario</th>
+                        <th>Nombre de Mascota</th>
+                        <th>Edad</th>
+                        <th>Juguete Asignado</th>
+                        <th>Última Visita</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in resumen %}
+                    <tr>
+                        <td>{{ item.propietario }}</td>
+                        <td>{{ item.mascota }}</td>
+                        <td>{{ item.edad }} años</td>
+                        <td>{{ item.juguete }}</td>
+                        <td>{{ item.ultima_visita }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="5">No hay datos disponibles.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div style="margin-top: 3rem;">
+                <h3 style="text-align: center;">Cantidad de Visitas por Mascota</h3>
+                <canvas id="graficoVisitas" height="120"></canvas>
+            </div>
+            <br>
+            <div class="btn-center">
+                <a href="{% url 'exportar_resumen_excel' %}" class="btn-export">📁 Exportar a Excel</a>
+                <button id="descargarGrafico" class="btn-export">📷 Descargar gráfico</button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block extra_scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchPropietario = document.getElementById("searchPropietario");
+        const searchMascota = document.getElementById("searchMascota");
+        const rows = document.querySelectorAll("tbody tr");
+
+        function filterTable() {
+            const propietarioValue = searchPropietario.value.toLowerCase();
+            const mascotaValue = searchMascota.value.toLowerCase();
+
+            rows.forEach(row => {
+                const propietario = row.cells[0]?.textContent.toLowerCase();
+                const mascota = row.cells[1]?.textContent.toLowerCase();
+
+                const matchPropietario = propietario.includes(propietarioValue);
+                const matchMascota = mascota.includes(mascotaValue);
+
+                if (matchPropietario && matchMascota) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        }
+
+        searchPropietario.addEventListener("input", filterTable);
+        searchMascota.addEventListener("input", filterTable);
+    });
+</script>
+<script>
+    const searchPropietario = document.getElementById("searchPropietario");
+    const searchMascota = document.getElementById("searchMascota");
+    const clearBtn = document.getElementById("clearFilters");
+
+    function filterTable() {
+        const propietarioValue = searchPropietario.value.toLowerCase();
+        const mascotaValue = searchMascota.value.toLowerCase();
+
+        const rows = document.querySelectorAll("tbody tr");
+        rows.forEach(row => {
+            const propietario = row.cells[0]?.textContent.toLowerCase();
+            const mascota = row.cells[1]?.textContent.toLowerCase();
+
+            const visible =
+                propietario.includes(propietarioValue) &&
+                mascota.includes(mascotaValue);
+
+            row.style.display = visible ? "" : "none";
+        });
+    }
+
+    searchPropietario.addEventListener("input", filterTable);
+    searchMascota.addEventListener("input", filterTable);
+
+    clearBtn.addEventListener("click", function () {
+        searchPropietario.value = "";
+        searchMascota.value = "";
+        filterTable();
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('graficoVisitas').getContext('2d');
+
+    const nombresMascotas = {{ nombres_mascotas| safe }};
+    const visitas = {{ cantidad_visitas| safe }};
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: nombresMascotas,
+            datasets: [{
+                label: 'Cantidad de Visitas',
+                data: visitas,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.6)',
+                    'rgba(54, 162, 235, 0.6)',
+                    'rgba(255, 206, 86, 0.6)',
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153, 102, 255, 0.6)',
+                    'rgba(255, 159, 64, 0.6)',
+                    'rgba(199, 199, 199, 0.6)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(159, 159, 159, 1)'
+                ],
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    });
+</script>
+<script>
+    document.getElementById('descargarGrafico').addEventListener('click', function () {
+        const canvas = document.getElementById('graficoVisitas');
+        const url = canvas.toDataURL('image/png');
+
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = 'visitas_por_mascota.png';
+        link.click();
+    });
+</script>
+{% endblock %}

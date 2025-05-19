@@ -14,11 +14,10 @@
         <h1>Veterinaria DJANGO</h1>
         <nav>
             <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Servicios</a></li>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'servicios' %}">Servicios</a></li>
                 <li><a href="#">Nosotros</a></li>
                 <li><a href="#">Contacto</a></li>
-                <li><a href="{% url 'inventory_home' %}" class="btn">Inventario</a></li>
             </ul>
         </nav>
     </header>
@@ -27,10 +26,10 @@
         <div class="hero-text">
             <h2>Cuidamos a tus Mascotas</h2>
             <p>Atención médica y cariño para tus amigos peludos.</p>
-            <a href="#" class="btn">Ver Servicios</a>
+            <a href="{% url 'servicios' %}" class="btn">Acceder a nuestros servicios</a>
         </div>
         <div class="hero-image">
-            <img src="{% static 'images/veterinary.png' %}" alt="Mascota feliz">
+            <img src="{% static 'images/veterinarian.png' %}" alt="Mascota feliz">
         </div>
     </section>
 
