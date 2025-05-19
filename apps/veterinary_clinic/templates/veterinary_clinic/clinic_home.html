@@ -1,0 +1,35 @@
+{% extends 'veterinary_clinic/base.html' %}
+
+{% load static %}
+
+{% block title %}Agregar Accesorios{% endblock %}
+
+{% block content %}
+
+<section class="services">
+    <h2>Servicios clínicos</h2>
+    <div class="service-container">
+        <div class="service-card">
+            <img src="{% static 'images/medical-record.png' %}" alt="Producto">
+            <br><br>
+            <h3><a href="{% url 'nueva_historia_clinica' %}" class="btn return-btn">Crear Historia clínica</a></h3>
+            <br><br>
+            <h3><a class="btn return-btn">Ver detalles</a></h3>
+            <br>
+            <p>Crear ingresos de pacientes.</p>
+        </div>
+        <div class="service-card">
+            <img src="{% static 'images/veterinary.png' %}" alt="Cuidado_Higiene">
+            <br><br>
+            <h3><a href="{% url 'listado_historias' %}" class="btn return-btn">Listado historias clinicas</a></h3>
+            <br>
+            <h3><a class="btn return-btn">Ver detalles</a></h3>
+            <br>
+            <p>Ver historias clinicas</p>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
