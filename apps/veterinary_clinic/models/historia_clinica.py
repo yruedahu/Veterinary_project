@@ -18,6 +18,7 @@ class HistoriaClinica(models.Model):
     departamento = models.ForeignKey(Departamento, on_delete=models.SET_NULL, null=True)
     ciudad = models.ForeignKey(Ciudad, on_delete=models.SET_NULL, null=True)
     fecha_atencion = models.DateTimeField(default=timezone.now)
+    diagnostico = models.TextField(blank=True, null=True)
 
     class Meta:
         db_table = "historias_clinicas"

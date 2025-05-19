@@ -29,7 +29,9 @@ label {
     margin-bottom: 5px;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -51,7 +53,7 @@ input, select, textarea {
 /* Botón */
 button.btn {
     width: 100%;
-    background: #4CAF50;
+    background: #4CAF51;
     color: white;
     padding: 12px;
     border: none;
@@ -66,4 +68,46 @@ button.btn:hover {
     background: #45a049;
     cursor: pointer;
     color: black;
+}
+
+
+
+
+/* --- HC --- */
+.inventory {
+    padding: 50px;
+    text-align: center;
+}
+
+.inventory table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.inventory th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.inventory th {
+    background: #4CAF50;
+    color: white;
+}
+
+.inventory .btn-edit {
+    background: #ffc107;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.inventory .btn-delete {
+    background: #dc3545;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
 }

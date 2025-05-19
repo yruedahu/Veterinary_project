@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
         <h1><a href="{% url 'home' %}" class="btn">Veterinaria DJANGO</a></h1>
@@ -45,33 +47,33 @@
     </section>
 
     <section class="inventory">
-        
+
         {% if productos %}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Descripcion</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for producto in productos %}
-                    <tr>
-                        <td>{{ producto.nombre }}</td>
-                        <td>{{ producto.precio }}</td>
-                        <td>{{ producto.cantidad }}</td>
-                        <td>{{ producto.descripcion }}</td>
-                        <td>
-                            <a href="{% url 'editar_producto' producto.id %}" class="btn-edit">Editar</a>
-                            <a href="{% url 'eliminar_producto' producto.id %}" class="btn-delete">Eliminar</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in productos %}
+                <tr>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.precio }}</td>
+                    <td>{{ producto.cantidad }}</td>
+                    <td>{{ producto.descripcion }}</td>
+                    <td>
+                        <a href="{% url 'editar_producto' producto.id %}" class="btn-edit">Editar</a>
+                        <a href="{% url 'eliminar_producto' producto.id %}" class="btn-delete">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
         {% else %}
         {% endif %}
     </section>
@@ -80,4 +82,5 @@
         <p>&copy; 2024 Veterinaria Django - Todos los derechos reservados.</p>
     </footer>
 </body>
+
 </html>

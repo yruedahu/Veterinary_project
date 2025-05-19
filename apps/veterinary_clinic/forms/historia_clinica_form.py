@@ -20,10 +20,12 @@ class HistoriaClinicaForm(forms.ModelForm):
             "departamento",
             "ciudad",
             "fecha_atencion",
+            "diagnostico",
         ]
         widgets = {
             "fecha_atencion": forms.DateInput(attrs={"type": "date"}),
             "motivo_consulta": forms.Textarea(attrs={"rows": 3}),
+            "diagnostico": forms.Textarea(attrs={"rows": 3}),
         }
 
     def __init__(self, *args, **kwargs):
