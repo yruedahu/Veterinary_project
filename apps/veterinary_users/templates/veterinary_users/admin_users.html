@@ -1,0 +1,60 @@
+{% extends 'veterinary_users/base.html' %}
+{% load static %}
+
+{% block title %}Gestión de Usuarios - Veterinaria PYTHON{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Gestión de Usuarios</h1>
+    <div class="text-end mb-3">
+        <button class="btn btn-primary" id="addUserBtn">Agregar Usuario</button>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="userModalLabel">Agregar Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="userForm">
+                    <div class="mb-3">
+                        <label for="userName" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="userName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="userEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="userEmail" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="userRole" class="form-label">Rol</label>
+                        <select class="form-select" id="userRole" required>
+                            <option value="admin">Admin</option>
+                            <option value="user">Usuario</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary" form="userForm">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

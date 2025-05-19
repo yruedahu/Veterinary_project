@@ -11,6 +11,22 @@ from .forms.historia_clinica_form import HistoriaClinicaForm
 from bson import ObjectId
 from django.utils import timezone
 import datetime
+from django.urls import reverse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
+
+def eliminar_historia_clinica(request, id):
+    try:
+        historia = HistoriaClinica.objects.get(_id=ObjectId(id))
+        historia.delete()
+        messages.success(request, "Historia clínica eliminada correctamente.")
+    except HistoriaClinica.DoesNotExist:
+        messages.error(request, "La historia clínica no existe.")
+    except Exception as e:
+        messages.error(request, f"Error al eliminar la historia clínica: {e}")
+
+    return redirect('listado_historias')
 
 
 def nueva_historia_clinica(request):
@@ -84,8 +100,6 @@ def cargar_razas(request):
     
     # Convertir ObjectId a string manualmente
     razas = [{'_id': str(raza['_id']), 'nombre': raza['nombre']} for raza in razas_queryset]
-    
-    print("Razas encontradas:", razas)
     return JsonResponse(razas, safe=False)
 
 def cargar_ciudades(request):
@@ -95,16 +109,49 @@ def cargar_ciudades(request):
     except Exception as e:
         print('ID no válido', departamento_id)
         return JsonResponse([], safe=False)
-    
-    
+        
     ciudades_queryset = Ciudad.objects.filter(departamento_id=departamento_oid).values('_id', 'nombre')
     
     ciudades = [{'_id': str(ciudad['_id']), 'nombre':ciudad['nombre']} for ciudad in ciudades_queryset]
     print("Ciudades encontradas:", ciudades)
     return JsonResponse(ciudades, safe=False)
 
-
 def ver_historia(request, id):
     historia = HistoriaClinica.objects.get(_id=ObjectId(id))
-    historia.id = str(historia._id)  # 👈 le damos un alias accesible
+    historia.id = str(historia._id)
     return render(request, 'veterinary_clinic/detalle_historia.html', {'historia': historia})
+
+def clinic_home(request):
+    return render(request, 'veterinary_clinic/clinic_home.html')
+
+def guardar_diagnostico(request, historia_id):
+    # Convertir historia_id a ObjectId si es necesario
+    try:
+        historia_id = ObjectId(historia_id)
+    except Exception as e:
+        messages.error(request, "ID de historia no válido.")
+        return redirect('home')  # O una vista de error que prefieras
+    
+    historia = get_object_or_404(HistoriaClinica, _id=historia_id)
+    
+    if request.method == 'POST':
+        diagnostico = request.POST.get('diagnostico')
+        historia.diagnostico = diagnostico
+        historia.save()
+        messages.success(request, "Diagnóstico guardado exitosamente.")
+        return redirect('ver_historia', id=historia.id_str)
+
+    return render(request, 'clinic/ver_historia.html', {'historia': historia})
+
+def exportar_historia_pdf(request, historia_id):
+    historia = HistoriaClinica.objects.get(_id=ObjectId(historia_id))
+    template = get_template('veterinary_clinic/historia_pdf.html')
+    html = template.render({'historia': historia})
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename=historia_{historia.nombre_mascota}.pdf'
+
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    if pisa_status.err:
+        return HttpResponse('Error al generar PDF', status=500)
+    return response

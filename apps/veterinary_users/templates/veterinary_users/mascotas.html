@@ -1,0 +1,19 @@
+{% extends 'veterinary_users/base.html' %}
+{% block title %}Mascotas - Veterinaria PYTHON{% endblock %}
+{% load static %}
+{% block content %}
+<section class="admin-container">
+    <h2>Mascotas</h2>
+    <div class="card">
+        <p>Administra y visualiza la información de las mascotas registradas en la veterinaria.</p>
+        <ul>
+            <li>Ver listado de mascotas</li>
+            <li>Registrar, editar o eliminar mascotas</li>
+            <li>Ver detalles de cada mascota</li>
+        </ul>
+        <div style="text-align:center; margin-top:30px;">
+            <img src="{% static 'images/pet.png' %}" alt="Mascotas" style="max-width:180px;">
+        </div>
+    </div>
+</section>
+{% endblock %}

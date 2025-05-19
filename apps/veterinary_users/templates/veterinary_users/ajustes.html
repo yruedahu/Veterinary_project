@@ -1,0 +1,41 @@
+{% extends 'veterinary_users/base.html' %}
+{% block title %}Ajustes - Veterinaria PYTHON{% endblock %}
+{% load static %}
+{% block content %}
+<section class="admin-container">
+    <h2>Ajustes del Sistema</h2>
+    <div class="card">
+        <p style="font-size:1.1em; color:#333;">Personaliza la experiencia y configura los parámetros principales de la veterinaria.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:30px; justify-content:center; margin-top:30px;">
+            <div style="flex:1; min-width:220px; max-width:320px; background:#f4f4f4; border-radius:10px; padding:20px; box-shadow:0 2px 8px rgba(76,175,80,0.08);">
+                <h3 style="color:#4CAF50; margin-bottom:10px;">Información de la Clínica</h3>
+                <ul style="margin-left:15px;">
+                    <li>Nombre, dirección y contacto</li>
+                    <li>Logo y branding</li>
+                    <li>Horarios de atención</li>
+                </ul>
+            </div>
+            <div style="flex:1; min-width:220px; max-width:320px; background:#f4f4f4; border-radius:10px; padding:20px; box-shadow:0 2px 8px rgba(76,175,80,0.08);">
+                <h3 style="color:#4CAF50; margin-bottom:10px;">Gestión de Usuarios</h3>
+                <ul style="margin-left:15px;">
+                    <li>Permisos y roles</li>
+                    <li>Restablecer contraseñas</li>
+                    <li>Invitar nuevos usuarios</li>
+                </ul>
+            </div>
+            <div style="flex:1; min-width:220px; max-width:320px; background:#f4f4f4; border-radius:10px; padding:20px; box-shadow:0 2px 8px rgba(76,175,80,0.08);">
+                <h3 style="color:#4CAF50; margin-bottom:10px;">Preferencias Generales</h3>
+                <ul style="margin-left:15px;">
+                    <li>Notificaciones y alertas</li>
+                    <li>Idioma y zona horaria</li>
+                    <li>Respaldo de datos</li>
+                </ul>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:40px;">
+            <img src="{% static 'images/settings.png' %}" alt="Ajustes" style="max-width:120px; opacity:0.85;">
+            <p style="color:#888; margin-top:10px; font-size:1em;">¡Configura tu veterinaria a tu medida!</p>
+        </div>
+    </div>
+</section>
+{% endblock %}

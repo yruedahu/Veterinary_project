@@ -70,6 +70,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'apps/veterinary_home/static'),
     os.path.join(BASE_DIR, 'apps/veterinary_clinic/static'),
+    os.path.join(BASE_DIR, 'apps/veterinary_users/static'),
 ]
 
 TEMPLATES = [
@@ -78,7 +79,11 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'apps/veterinary_home/templates'),
             os.path.join(BASE_DIR, 'apps/veterinary_clinic/templates'),
+<<<<<<< HEAD
             os.path.join(BASE_DIR, 'apps/veterinary_inventory/templates/veterinary_inventory'),
+=======
+            os.path.join(BASE_DIR, 'apps/veterinary_users/templates'),
+>>>>>>> 2be083fbf4f1ba5c136377e8b33184c3431eb144
 
                  ],
         'APP_DIRS': True,
@@ -135,7 +140,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'UTC'
 
@@ -154,4 +159,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD
+=======
+AUTH_USER_MODEL = 'veterinary_users.User'
+
+LOGIN_URL = '/users/login/'
+>>>>>>> 2be083fbf4f1ba5c136377e8b33184c3431eb144
 

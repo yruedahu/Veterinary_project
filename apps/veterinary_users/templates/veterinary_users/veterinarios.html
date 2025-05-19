@@ -1,0 +1,19 @@
+{% extends 'veterinary_users/base.html' %}
+{% block title %}Veterinarios - Veterinaria PYTHON{% endblock %}
+{% load static %}
+{% block content %}
+<section class="admin-container">
+    <h2>Veterinarios</h2>
+    <div class="card">
+        <p>Esta sección está destinada a la gestión y visualización de los veterinarios registrados en el sistema.</p>
+        <ul>
+            <li>Ver lista de veterinarios</li>
+            <li>Agregar, editar o eliminar veterinarios</li>
+            <li>Ver detalles de cada veterinario</li>
+        </ul>
+        <div style="text-align:center; margin-top:30px;">
+            <img src="{% static 'images/doctor_pets.png' %}" alt="Veterinarios" style="max-width:180px;">
+        </div>
+    </div>
+</section>
+{% endblock %}
