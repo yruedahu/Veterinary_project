@@ -1,0 +1,47 @@
+/* --- TABLA DE FACTURAS --- */
+.facturas-section {
+    width: 90%;
+    max-width: 1000px;
+    background: white;
+    margin: 40px auto;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.facturas-section h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.facturas-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.facturas-table th,
+.facturas-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.facturas-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.facturas-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.facturas-table a {
+    color: #4CAF50;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.facturas-table a:hover {
+    text-decoration: underline;
+}
