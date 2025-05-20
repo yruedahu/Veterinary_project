@@ -7,6 +7,6 @@ urlpatterns = [
     path('users/', include('apps.veterinary_users.urls')),
     path('pets/', include('apps.veterinary_pets.urls')),
     path('clinic/', include('apps.veterinary_clinic.urls')),
-    path('billing/', include('apps.veterinary_billing.urls')),
+    path('', include('apps.veterinary_billing.urls')),
     path('inventory/', include('apps.veterinary_inventory.urls')),
 ]

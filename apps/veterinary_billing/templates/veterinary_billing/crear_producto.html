@@ -1,0 +1,12 @@
+{% extends "veterinary_billing/menu.html" %}
+
+{% block content %}
+<div class="form-box">
+<h2>Registrar Producto o Servicio</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar Producto</button>
+</form>
+</div>
+{% endblock %}
