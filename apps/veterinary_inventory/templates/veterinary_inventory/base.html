@@ -4,36 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Producto</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Veterinaria Django{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
 </head>
 <body>
+
+    <!-- Header común -->
     <header>
-        <h1><a href="{% url 'home' %}" class="btn">Veterinaria DJANGO</a></h1>
+        <h1><a href="{% url 'home' %}" class="logo-link">Veterinaria DJANGO</a></h1>
         <nav>
             <ul>
                 <li><a href="{% url 'inventory_home' %}" class="btn">Inventario</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
     </header>
-    <section class="form-section">
-        <h1>Agregar Producto</h1>
-        <form method="POST" class="product-form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn">Guardar Producto</button>
-        </form>
-        <a href="{% url 'inventory_home' %}" class="btn btn-back">Volver al Inventario</a>
-    </section>
+
+    <!-- Contenido que cambia -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer común -->
     <footer>
         <p>&copy; 2024 Veterinaria Django - Todos los derechos reservados.</p>
     </footer>
+
 </body>
 </html>

@@ -10,3 +10,5 @@ urlpatterns = [
     path('billing/', include('apps.veterinary_billing.urls')),
     path('inventory/', include('apps.veterinary_inventory.urls')),
 ]
+
+

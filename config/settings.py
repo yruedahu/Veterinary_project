@@ -79,7 +79,11 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'apps/veterinary_home/templates'),
             os.path.join(BASE_DIR, 'apps/veterinary_clinic/templates'),
+<<<<<<< HEAD
+            os.path.join(BASE_DIR, 'apps/veterinary_inventory/templates/veterinary_inventory'),
+=======
             os.path.join(BASE_DIR, 'apps/veterinary_users/templates'),
+>>>>>>> 2be083fbf4f1ba5c136377e8b33184c3431eb144
 
                  ],
         'APP_DIRS': True,
@@ -110,6 +114,7 @@ DATABASES = {
         }
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -152,7 +157,10 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD
+=======
 AUTH_USER_MODEL = 'veterinary_users.User'
 
 LOGIN_URL = '/users/login/'
+>>>>>>> 2be083fbf4f1ba5c136377e8b33184c3431eb144
 

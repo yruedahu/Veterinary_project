@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Ver Detalles{% endblock %}
+
+{% block content %}
+<section class="inventory">
+        
+    {% if medicamentos %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Descripcion</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for medicamento in medicamentos %}
+                <tr>
+                    <td>{{ medicamento.nombre }}</td>
+                    <td>{{ medicamento.precio }}</td>
+                    <td>{{ medicamento.cantidad }}</td>
+                    <td>{{ medicamento.descripcion }}</td>
+                    <td>
+                        <a href="{% url 'editar_medicamentos' medicamento.id %}" class="btn-edit">Editar</a>
+                        <a href="{% url 'eliminar_medicamentos' medicamento.id %}" class="btn-delete">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No hay accesorios registrados.</p>
+    {% endif %}
+    
+    <div class="center-btn">
+        <a href="{% url 'inventory_home' %}" class="btn return-btn">Volver al Inventario</a>
+    </div>
+</section>
+{% endblock %}

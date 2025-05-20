@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Editar Proveedores{% endblock %}
+
+{% block content %}
+
+    <section class="form-section">
+        <h1 style="text-align: center;">Editar Proveedores</h1>
+        <form method="POST" class="product-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <br>
+            <button type="submit" class="btn">Actualizar</button>
+        </form>
+        <div class="center-btn">
+            <a href="{% url 'inventory_home' %}" class="btn return-btn">Volver al Inventario</a>
+        </div>
+        <div class="center-btn">
+            <a href="{% url 'detalle_proveedores' %}" class="btn return-btn">Volver a proveedores</a>
+
+        </div>
+    </section>
+    
+{% endblock %}
