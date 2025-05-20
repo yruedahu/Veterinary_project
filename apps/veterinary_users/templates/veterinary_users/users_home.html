@@ -1,0 +1,36 @@
+{% extends 'veterinary_users/base.html' %}
+
+{% block title %}Usuarios - Veterinaria PYTHON{% endblock %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/users_home_style.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="users-container">
+    {% for user in users %}
+    <div class="user-card">
+        {% if user.role == 'client' %}
+            <img src="{% static 'images/admin.png' %}" alt="Cliente">
+        {% elif user.role == 'vet' %}
+            <img src="{% static 'images/doctor_pets.png' %}" alt="Veterinario">
+        {% elif user.role == 'recep' %}
+            <img src="{% static 'images/recep.png' %}" alt="Recepcionista">
+        {% else %}
+            <img src="{% static 'images/admin.png' %}" alt="Usuario">
+        {% endif %}
+        <h3>{{ user.get_full_name }}</h3>
+        <p>{{ user.get_role_display }}</p>
+        <div class="crud-actions">
+            <a href="{% url 'user_detail' username=user.username %}" class="btn">Ver Perfil</a>
+            <a href="{% url 'user_edit' username=user.username %}" class="btn btn-edit">Editar</a>
+            <form action="{% url 'user_delete' username=user.username %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-delete" onclick="return confirm('¿Seguro que deseas eliminar este usuario?');">Eliminar</button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

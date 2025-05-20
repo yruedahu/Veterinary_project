@@ -1,72 +1,116 @@
+{% extends 'veterinary_clinic/base.html' %}
+
 {% load static %}
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro historia clínica</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="{% static 'css/clinic.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
-
-<body>
-    <header>
-        <h1>Veterinaria DJANGO</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
-
+{% block tittle %}Historia Clinica{% endblock %}
+{% block content %}
     <section class="form-section">
-        <h2>Registrar Historia Clínica</h2>
+
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+
+        <h2>Registrar Consulta médica</h2>
         <form method="POST">
             {% csrf_token %}
             <div class="form-container">
-                <p>
-                    <label for="nombre">Nombre del propietario:</label>
-                    <input type="text" id="nombre" name="nombre" required>
-                </p>
-
-                <p>
-                    <label for="mascota">Nombre de la mascota:</label>
-                    <input type="text" id="mascota" name="mascota" required>
-                </p>
-
-                <p>
-                    <label for="especie">Especie:</label>
-                    <select id="especie" name="especie">
-                        <option value="perro">Perro</option>
-                        <option value="gato">Gato</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </p>
-
-                <p>
-                    <label for="edad">Edad:</label>
-                    <input type="number" id="edad" name="edad" min="0" required>
-                </p>
-
-                <p>
-                    <label for="sintomas">Síntomas:</label>
-                    <textarea id="sintomas" name="sintomas" rows="4" required></textarea>
-                </p>
-
-                <button type="submit" class="btn">Guardar</button>
+                <div class="form-group">
+                    <label for="{{ form.nombre_mascota.id_for_label }}">Nombre de la Mascota</label>
+                    {{ form.nombre_mascota }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.especie.id_for_label }}">Especie</label>
+                    {{ form.especie }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.raza.id_for_label }}">Raza</label>
+                    {{ form.raza }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.edad.id_for_label }}">Edad</label>
+                    {{ form.edad }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.duenio.id_for_label }}">Dueño</label>
+                    {{ form.duenio }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.telefono_contacto.id_for_label }}">Teléfono de Contacto</label>
+                    {{ form.telefono_contacto }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.departamento.id_for_label }}">Departamento</label>
+                    {{ form.departamento }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.ciudad.id_for_label }}">Ciudad</label>
+                    {{ form.ciudad }}
+                </div>
+        
+                <div class="form-group">
+                    <label for="{{ form.fecha_atencion.id_for_label }}">Fecha de Atención</label>
+                    {{ form.fecha_atencion }}
+                </div>
+        
+                <div class="form-group textarea">
+                    <label for="{{ form.motivo_consulta.id_for_label }}">Motivo de Consulta</label>
+                    {{ form.motivo_consulta }}
+                </div>
+        
+                <div class="form-actions">
+                    <button type="submit" class="btn">Guardar</button>
+                </div>
             </div>
         </form>
+        
     </section>
-
-    <footer>
-        <p>&copy; 2024 Veterinaria Django - Todos los derechos reservados.</p>
-    </footer>
 </body>
-
-</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const especieSelect = document.getElementById('id_especie');
+        const razaSelect = document.getElementById('id_raza');
+        const departamentoSelect = document.getElementById('id_departamento');
+        const ciudadSelect = document.getElementById('id_ciudad');
+    
+        especieSelect.addEventListener('change', function () {
+            const especieId = this.value;
+            fetch(`/clinic/ajax/cargar-razas/?especie_id=${especieId}`)
+                .then(response => response.json())
+                .then(data => {
+                    razaSelect.innerHTML = '<option value="">---------</option>';
+                    data.forEach(raza => {
+                        const option = document.createElement('option');
+                        option.value = raza._id;
+                        option.textContent = raza.nombre;
+                        razaSelect.appendChild(option);
+                    });
+                });
+        });
+    
+        departamentoSelect.addEventListener('change', function () {
+            const deptoId = this.value;
+            fetch(`/clinic/ajax/cargar-ciudades/?departamento_id=${deptoId}`)
+                .then(response => response.json())
+                .then(data => {
+                    ciudadSelect.innerHTML = '<option value="">---------</option>';
+                    data.forEach(ciudad => {
+                        const option = document.createElement('option');
+                        option.value = ciudad._id;
+                        option.textContent = ciudad.nombre;
+                        ciudadSelect.appendChild(option);
+                    });
+                });
+        });
+    });
+    </script>
+    
+{% endblock %}

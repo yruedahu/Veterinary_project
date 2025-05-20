@@ -1,0 +1,51 @@
+{% extends 'veterinary_clinic/base.html' %}
+
+{% load static %}
+
+{% block tittle %}Historia Clinica{% endblock %}
+{% block content %}
+
+<div class="inventory">
+    <h2>Historias clínicas registradas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Mascota</th>
+                <th>Especie</th>
+                <th>Raza</th>
+                <th>Edad</th>
+                <th>Motivo consulta</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for historia in historias %}
+            <tr>
+                <td>{{historia.nombre_mascota}}</td>
+                <td>{{historia.especie.nombre}}</td>
+                <td>{{historia.raza.nombre}}</td>
+                <td>{{historia.edad}}</td>
+                <td>{{historia.motivo_consulta}}</td>
+                <td>
+                    <a href="{% url 'ver_historia' historia.id_str %}" title="Editar">
+                        <i class="material-icons btn-edit">edit</i>
+                    </a>
+                    <a href="{% url 'eliminar_historia_clinica' historia.id_str %}" title="Eliminar">
+                        <i class="material-icons btn-delete">delete</i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+
+{% endblock %}

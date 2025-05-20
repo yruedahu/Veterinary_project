@@ -1,0 +1,15 @@
+{% extends 'veterinary_users/base.html' %}
+{% load static %}
+{% block title %}Eliminar Usuario - {{ user.get_full_name }}{% endblock %}
+{% block content %}
+<section class="register-container">
+    <div class="card">
+        <h2>¿Estás seguro de que deseas eliminar a {{ user.get_full_name }}?</h2>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn" style="background:#d32f2f; color:white;">Eliminar</button>
+            <a href="{% url 'users_home' %}" class="btn" style="background:#ccc;color:#333;">Cancelar</a>
+        </form>
+    </div>
+</section>
+{% endblock %}

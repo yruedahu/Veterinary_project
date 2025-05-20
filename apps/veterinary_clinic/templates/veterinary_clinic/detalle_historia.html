@@ -1,0 +1,95 @@
+{% extends 'veterinary_clinic/base.html' %}
+
+{% load static %}
+
+{% block tittle %}Historia Clínica{% endblock %}
+
+{% block content %}
+<section class="form-section">
+
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+
+    <h2>Detalle de Historia Clínica</h2>
+
+    <div class="form-container">
+        <div class="form-group">
+            <label>Mascota</label>
+            <p>{{ historia.nombre_mascota }}</p>
+        </div>
+
+        <div class="form-group">
+            <label>Especie</label>
+            <p>{{ historia.especie.nombre }}</p>
+        </div>
+
+        <div class="form-group">
+            <label>Raza</label>
+            <p>{{ historia.raza.nombre }}</p>
+        </div>
+
+        <div class="form-group">
+            <label>Edad</label>
+            <p>{{ historia.edad }}</p>
+        </div>
+
+        <div class="form-group">
+            <label>Dueño</label>
+            <p>{{ historia.duenio }}</p>
+        </div>
+
+        <div class="form-group">
+            <label>Teléfono</label>
+            <p>{{ historia.telefono_contacto }}</p>
+        </div>
+
+        <div class="form-group">
+            <label>Departamento</label>
+            <p>{{ historia.departamento.nombre }}</p>
+        </div>
+
+        <div class="form-group">
+            <label>Ciudad</label>
+            <p>{{ historia.ciudad.nombre }}</p>
+        </div>
+
+        <div class="form-group">
+            <label>Fecha de atención</label>
+            <p>{{ historia.fecha_atencion|date:"Y-m-d" }}</p>
+        </div>
+
+        <div class="form-group textarea">
+            <label>Motivo de consulta</label>
+            <p>{{ historia.motivo_consulta }}</p>
+        </div>
+    </div>
+
+    {% if not historia.diagnostico %}
+    <form method="POST" action="{% url 'guardar_diagnostico' historia.id_str %}">
+        {% csrf_token %}
+        <label for="diagnostico">Diagnóstico:</label>
+        <textarea name="diagnostico" id="diagnostico" rows="5" cols="60"></textarea>
+        <br>
+        <button style="background: #ffc107;
+    color: #000;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;" type="submit">Guardar diagnóstico</button>
+    </form>
+    {% else %}
+    <p><strong>Diagnóstico:</strong> {{ historia.diagnostico }}</p>
+    <a href="{% url 'exportar_historia_pdf' historia.id_str %}" target="_blank" title="Descargar pdf">
+        <i class="material-icons" style="background: #dc3545;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;">picture_as_pdf</i>
+    </a>
+    {% endif %}
+
+
+</section>
+{% endblock %}

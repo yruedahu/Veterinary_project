@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Visita</title>
+    <link rel="stylesheet" href="{% static 'pets_visit.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <h1>Veterinaria DJANGO</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <a href="{% url 'mascotas_list' %}" class="back-btn">← Volver</a>
+
+    <main>
+        <section class="form-section">
+            <!-- Formulario -->
+            <div class="form-container wide-form">
+                <h2>Registrar Juguete</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p>
+                        <label for="toy">Nombre del Juguete:</label>
+                        <input type="text" id="toy" name="toy" required>
+                    </p>
+                    <p>
+                        <label for="description">Descripción:</label>
+                        <input type="text" id="description" name="description" required>
+                    </p>
+                    <p>
+                        <label for="pet">Mascota:</label>
+                        <select id="pet" name="pet" required>
+                            <option value="michi">Michi</option>
+                            <option value="rocky">Rocky</option>
+                            <option value="luna">Luna</option>
+                        </select>
+                    </p>
+                    <button type="submit" class="btn">Guardar</button>
+                </form>
+            </div>
+    
+            <!-- Imagen decorativa -->
+            <img src="{% static 'images/juguete.jpg' %}" alt="Juguete mascota" class="form-image">
+        </section>
+    </main>
+
+    <footer class="foot">
+        <p>&copy; 2024 Veterinaria Django - Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

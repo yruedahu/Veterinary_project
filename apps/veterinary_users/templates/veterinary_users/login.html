@@ -1,0 +1,26 @@
+{% extends 'veterinary_users/base.html' %}
+
+{% load static %}
+
+{% block title %}Login - Veterinaria PYTHON{% endblock %}
+
+{% block content %}
+<section class="login-container">
+    <div class="card">
+        <h2>Iniciar Sesión</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_username">Nombre de usuario</label>
+                <input type="text" id="id_username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="id_password">Contraseña</label>
+                <input type="password" id="id_password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p>¿No tienes una cuenta? <a href="{% url 'register' %}" class="link">Regístrate aquí</a>.</p>
+    </div>
+</section>
+{% endblock %}
