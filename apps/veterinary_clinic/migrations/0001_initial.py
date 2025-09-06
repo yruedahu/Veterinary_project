@@ -1,0 +1,28 @@
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    initial = True
+
+    dependencies = [
+    ]
+
+    operations = [
+        migrations.CreateModel(
+            name='HistoriaClinica',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('nombre_mascota', models.CharField(max_length=100)),
+                ('especie', models.CharField(choices=[('Perro', 'Perro'), ('Gato', 'Gato')], max_length=10)),
+                ('raza', models.CharField(blank=True, max_length=50, null=True)),
+                ('edad', models.IntegerField()),
+                ('duenio', models.CharField(max_length=100)),
+                ('telefono_contacto', models.CharField(max_length=15)),
+                ('motivo_consulta', models.TextField()),
+                ('diagnostico', models.TextField(blank=True, null=True)),
+                ('tratamiento', models.TextField(blank=True, null=True)),
+                ('fecha_creacion', models.DateTimeField(auto_now_add=True)),
+            ],
+        ),
+    ]

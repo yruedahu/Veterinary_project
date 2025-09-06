@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario - Veterinaria DJANGO</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/inventory.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1><a href="{% url 'home' %}" class="btn">Veterinaria DJANGO</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'inventory_home' %}" class="btn">Inventario</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="services">
+        <h2>Servicios de inventario</h2>
+        <div class="service-container">
+            <div class="service-card">
+                <img src="{% static 'img/producto.png' %}" alt="Producto">
+                <h3><a href="{% url 'agregar_producto' %}" class="btn">Crear Producto</a></h3>
+                <p>Crea productos para vender en tu veterinaria.</p>
+            </div>
+            <div class="service-card">
+                <img src="{% static 'img/Proveedor.png' %}" alt="Proveedor">
+                <h3>Crear Proveedor</h3>
+                <p>Crea proveedores para anclar con tus productos.</p>
+            </div>
+            <div class="service-card">
+                <img src="{% static 'img/Ventas.png' %}" alt="Estética">
+                <h3>Ventas</h3>
+                <p>Verificar ventas de tus productos en la veterinaria.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="inventory">
+        
+        {% if productos %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Descripcion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr>
+                        <td>{{ producto.nombre }}</td>
+                        <td>{{ producto.precio }}</td>
+                        <td>{{ producto.cantidad }}</td>
+                        <td>{{ producto.descripcion }}</td>
+                        <td>
+                            <a href="{% url 'editar_producto' producto.id %}" class="btn-edit">Editar</a>
+                            <a href="{% url 'eliminar_producto' producto.id %}" class="btn-delete">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+        {% endif %}
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Veterinaria Django - Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

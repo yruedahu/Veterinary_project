@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios Veterinarios</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="wrapper">
+    <header>
+        <h1>Veterinaria DJANGO</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Inicio</a></li>
+                <li><a href="{% url 'servicios' %}">Servicios</a></li>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="services">
+            <h2>Elige un Servicio</h2>
+            <div class="service-container">
+                <div class="service-card">
+                    <img src="{% static 'images/inventory.png' %}" alt="Inventario">
+                    <br>
+                    <h3>Inventario</h3>
+                    <br>
+                    <p>Ingresa información de nuevos productos.</p>
+                    <br>
+                    <a href="{% url 'inventory_home' %}" class="btn-arrow">➜</a>
+                </div>
+                <div class="service-card">
+                    <img src="{% static 'images/medical-history.png' %}" alt="Consulta Médica">
+                    <br>
+                    <h3>Historia Clinica</h3>
+                    <br>
+                    <p>Consulta general o de urgencias para tu mascota, con toda su información.</p>
+                    <br>
+                    <a href="" class="btn-arrow">➜</a>
+                </div>
+                <div class="service-card">
+                    <img src="{% static 'images/veterinary.png' %}" alt="Estética">
+                    <br>
+                    <h3>Mascotas</h3>
+                    <br>
+                    <p>Reserva un turno para estética canina o felina, y información de tu mascota.</p>
+                    <br>
+                    <a href="{% url 'mascotas_list' %}" class="btn-arrow">➜</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    </div>
+    <footer class="foot">
+        <p>&copy; 2024 Veterinaria Django - Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

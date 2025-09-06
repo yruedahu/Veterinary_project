@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Listado de Mascotas{% endblock %}
+
+{% block content %}
+<section class="form-section">
+    <div class="layout">
+        <aside class="sidebar-buttons">
+            <a href="{% url 'pets_home' %}"><i class="fas fa-plus-circle"></i> Agregar Mascota</a>
+            <a href="{% url 'mascotas_visit' %}"><i class="fas fa-notes-medical"></i> Agregar Visita</a>
+            <a href="{% url 'mascotas_toy' %}"><i class="fas fa-paw"></i> Agregar Juguete</a>
+            <a href="{% url 'mascotas_resumen' %}"><i class="fas fa-list-ul"></i> Ver Lista</a>
+        </aside>
+
+        <div class="main-content">
+            <h2>Listado de Mascotas</h2>
+            <div class="container">
+                {% for mascota in mascotas %}
+                <div class="card">
+                    <!--<img src="{% static 'images/perro.jpg' %}" alt="Mascota" class="form-image">-->
+                    {% if mascota.picture %}
+                    <img src="{{ mascota.picture }}" alt="{{ mascota.name }}" class="product-image">
+                    {% else %}
+                    <img src="{% static 'images/perro.jpg' %}" alt="Imagen por defecto"
+                        style="width: 200px; height: auto;">
+                    {% endif %}
+
+                    <div class="card-content">
+                        <h3>Nombre: {{ mascota.name }}</h3>
+                        <p>Propietario: {{ mascota.owner.name }}</p>
+                        <p>Especie: {{ mascota.specie.specie }}</p>
+                        <p>Edad: {{ mascota.age }} años</p>
+
+                        <div class="card-actions">
+                            <a href="{% url 'editar_mascota' mascota.id %}" class="btn btn-edit"><i
+                                    class="fas fa-edit"></i> Editar</a>
+                            <form action="{% url 'eliminar_mascota' mascota.id %}" method="POST"
+                                style="display:inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-delete"
+                                    onclick="return confirm('¿Estás seguro de eliminar esta mascota?')">
+                                    <i class="fas fa-trash-alt"></i> Eliminar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <p>No hay mascotas registradas.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{% static 'custom_script.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registro de Juguete{% endblock %}
+
+{% block content %}
+<a href="{% url 'mascotas_list' %}" class="back-btn">← Volver</a>
+
+<main>
+    <section class="form-section">
+        <!-- Formulario -->
+        <div class="form-container wide-form">
+            <h2>Registrar Juguete</h2>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <p>
+                    <label for="toy">Nombre del Juguete:</label>
+                    <input type="text" name="name" placeholder="Nombre del juguete" required>
+                </p>
+                <p>
+                    <label for="description">Descripción:</label>
+                    <input type="text" id="description" name="description" required>
+                </p>
+                <p>
+                    <label for="pet">Mascotas:</label>
+                    <select id="pet" name="pet" multiple required>
+                        {% for mascota in mascotas %}
+                        <option value="{{ mascota.id }}">{{ mascota.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <small>Mantén presionada Ctrl (o Cmd en Mac) para seleccionar varias.</small>
+                </p>
+                <button type="submit" class="btn">Guardar</button>
+            </form>
+        </div>
+
+        <img src="{% static 'images/juguete.jpg' %}" alt="Juguete mascota" class="form-image">
+    </section>
+</main>
+{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'pets_visit.css' %}">
+{% endblock %}

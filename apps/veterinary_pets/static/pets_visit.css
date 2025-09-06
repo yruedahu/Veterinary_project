@@ -1,0 +1,315 @@
+/* ------------------------------
+   Reset y fuente base
+------------------------------ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ------------------------------
+   HEADER
+------------------------------ */
+header {
+    background: #4CAF50;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* ------------------------------
+   FORMULARIO DE VISITA
+------------------------------ */
+/* Sección principal del formulario */
+.form-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    z-index: 2;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+form p {
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.wide-form {
+    flex: 2;
+    max-width: 600px;
+    min-width: 320px;
+}
+
+/* Tabla en mascotas_resumen.html */
+
+.table-container {
+    margin: auto;
+    padding: 1rem;
+    max-width: 95%; /* antes 90% */
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-container h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.95rem;
+}
+
+thead {
+    background-color: #45a049;
+    color: white;
+}
+
+th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #e6f0ff;
+}
+
+td[colspan] {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}
+
+.back-btn {
+    display: inline-block;
+    margin: 1rem;
+    color: #0077cc;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-btn:hover {
+    text-decoration: underline;
+}
+
+.table-filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.search-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    max-width: 300px;
+}
+
+.clear-btn {
+    background-color: #054a29;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.clear-btn:hover {
+    background-color: #45a049;
+}
+
+.btn-export {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: inherit;       
+    font-weight: 400;           
+    line-height: normal;
+}
+
+.btn-export:hover {
+    background-color: #45a049;
+}
+
+.btn-export:focus {
+    outline: none;
+}
+
+/* Imagen decorativa */
+.form-image {
+    width: 350px;
+    height: auto;
+    margin-left: 40px;
+    z-index: 1;
+}
+
+.visit-box {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px;
+    flex-wrap: wrap;
+}
+
+.visit-image {
+    flex: 1;
+    max-width: 400px;
+    min-width: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visit-image img {
+    width: 100%;
+    max-width: 350px; /* Limita el tamaño de la imagen */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Botón guardar */
+.btn {
+    background-color: #45a049;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: block;
+    margin: 0 auto;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+/* Enlace Volver */
+.back-btn {
+    display: inline-block;
+    margin: 20px 40px;
+    color: #45a049;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* ------------------------------
+   FOOTER
+------------------------------ */
+.foot {
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    padding: 15px 0;
+    margin-top: 30px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f7f7f7;
+    color: #333;
+}
+
+main {
+    flex: 1;
+}
+
+/* ------------------------------
+   RESPONSIVE
+------------------------------ */
+@media (max-width: 768px) {
+    .visit-box {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .visit-image {
+        margin-top: 20px;
+        max-width: 90%;
+    }
+
+    .visit-form-container {
+        width: 100%;
+    }
+}

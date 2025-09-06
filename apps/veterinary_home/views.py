@@ -4,4 +4,7 @@ from django.http import HttpResponse
 def home(request):
     return render(request, 'veterinary_home/home.html')
 
+def servicios_view(request):
+    return render(request, 'veterinary_home/servicios.html')
+
 
